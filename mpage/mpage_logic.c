@@ -10,8 +10,6 @@
 // 1. add page id here.
 enum mpage_id {
     PAGE_WELCOME,
-    PAGE1,
-    PAGE2,
 };
 
 static mpage_ui_msg_t ui_msg;
@@ -21,6 +19,7 @@ static mpage_ui_msg_t ui_msg;
 
 static int welcom_logic(mpage_ui_msg_t *msg)
 {
+    
     return 0;
 }
 
