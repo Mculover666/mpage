@@ -20,7 +20,7 @@ typedef struct mpage_ui_msg_st {
 - msg_len：消息内容长度，单位Byte（可选）
 - msg_ctx：消息内容（可选），最大长度可由 MPAGE_UI_MSG_LEN_MAX 指定，默认256.
 
-# 使用方法
+# 如何添加页面
 
 1. 在枚举类型中添加page id（WELCOME只是默认页，可删除）,mpage通过指定 page id 来跳转到对应的页。
 ```c
@@ -59,3 +59,16 @@ const mpage_t mpage[] = {
     {PAGE_WELCOME, welcom_ui, welcom_logic},
 };
 ```
+# 如何启动
+
+mpage 启动 API 如下：
+```c
+int mpage_start(void);
+```
+
+mpage调度器在 while (1) 循环中执行，所以**该函数启动后不再返回**。
+
+（1）裸机中，推荐在 while (1) 之前调用，由 mpage 接管系统中原有的死循环。
+
+（2）RTOS中，推荐新建一个任务，任务中执行 mpage_start。
+
